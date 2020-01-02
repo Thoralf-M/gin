@@ -1,6 +1,6 @@
 <script>
   import { quintOut } from "svelte/easing";
-  import { crossfade } from "svelte/transition";
+  import { crossfade, fade } from "svelte/transition";
 
   const [send, receive] = crossfade({
     duration: d => Math.sqrt(d * 200)
@@ -9,13 +9,29 @@
   let uid = 1;
   let ginselected = false;
   let selecteditems = 0;
+  let gesendet = false;
 
   let zutatens = [
     { id: uid++, auswahl: false, description: "London Gin", gin: true },
     { id: uid++, auswahl: false, description: "Destillierter Gin", gin: true },
-    { id: uid++, auswahl: false, description: "Botanist Islay Dry Gin", gin: true },
-    { id: uid++, auswahl: false, description: "Monkey 47 Schwarzwald Dry Gin", gin: true },
-    { id: uid++, auswahl: false, description: "New Western Dry Gin", gin: true },
+    {
+      id: uid++,
+      auswahl: false,
+      description: "Botanist Islay Dry Gin",
+      gin: true
+    },
+    {
+      id: uid++,
+      auswahl: false,
+      description: "Monkey 47 Schwarzwald Dry Gin",
+      gin: true
+    },
+    {
+      id: uid++,
+      auswahl: false,
+      description: "New Western Dry Gin",
+      gin: true
+    },
     { id: uid++, auswahl: false, description: "Reserve Gin", gin: true },
     { id: uid++, auswahl: false, description: "Angelikawurzel" },
     { id: uid++, auswahl: false, description: "Holunderbeere" },
@@ -57,6 +73,10 @@
   }
 
   function submit() {
+    gesendet = true;
+    setTimeout(() => {
+      gesendet = false;
+    }, 4000);
     let auswahl = zutatens.filter(t => t.auswahl);
     console.log("Bestellung:", auswahl);
   }
@@ -69,7 +89,7 @@
     grid-gap: 1em;
     max-width: 36em;
     margin: 0 auto;
-		margin-top: 1em;
+    margin-top: 1em;
   }
 
   h2 {
@@ -144,8 +164,11 @@
         {zutaten.description}
       </label>
     {/each}
-{#if selecteditems > 0 && ginselected == true}
-    <button class="submit" on:click={submit}>Bestellen</button>
-		{/if}
+    {#if selecteditems > 0 && ginselected == true}
+      <button class="submit" on:click={submit}>Bestellen</button>
+    {/if}
+    {#if gesendet}
+      <p transition:fade>Bestellung gesendet!</p>
+    {/if}
   </div>
 </div>
