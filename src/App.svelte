@@ -13,14 +13,26 @@
   let zutatens = [
     { id: uid++, auswahl: false, description: "London Gin", gin: true },
     { id: uid++, auswahl: false, description: "Destillierter Gin", gin: true },
-    { id: uid++, auswahl: false, description: "Dry Gin", gin: true },
-    { id: uid++, auswahl: false, description: "Zitrone" },
-    { id: uid++, auswahl: false, description: "Tonic Water" },
-    { id: uid++, auswahl: false, description: "Orange" },
-    { id: uid++, auswahl: false, description: "Ingwer" },
-    { id: uid++, auswahl: false, description: "Wodka" },
-    { id: uid++, auswahl: false, description: "Eiswürfel" },
-    { id: uid++, auswahl: false, description: "Gurke" }
+    { id: uid++, auswahl: false, description: "Botanist Islay Dry Gin", gin: true },
+    { id: uid++, auswahl: false, description: "Monkey 47 Schwarzwald Dry Gin", gin: true },
+    { id: uid++, auswahl: false, description: "New Western Dry Gin", gin: true },
+    { id: uid++, auswahl: false, description: "Reserve Gin", gin: true },
+    { id: uid++, auswahl: false, description: "Angelikawurzel" },
+    { id: uid++, auswahl: false, description: "Holunderbeere" },
+    { id: uid++, auswahl: false, description: "Holunderblüte" },
+    { id: uid++, auswahl: false, description: "Koriander" },
+    { id: uid++, auswahl: false, description: "Minze" },
+    { id: uid++, auswahl: false, description: "Paradieskörner" },
+    { id: uid++, auswahl: false, description: "Tasmansicher Bergpfeffer" },
+    { id: uid++, auswahl: false, description: "Kardamom" },
+    { id: uid++, auswahl: false, description: "Lavendel" },
+    { id: uid++, auswahl: false, description: "Rosmarin" },
+    { id: uid++, auswahl: false, description: "Tonka-Bohne (saisonal)" },
+    { id: uid++, auswahl: false, description: "Süßholz" },
+    { id: uid++, auswahl: false, description: "Vanille" },
+    { id: uid++, auswahl: false, description: "Veilchenwurzel" },
+    { id: uid++, auswahl: false, description: "Wacholder" },
+    { id: uid++, auswahl: false, description: "Zitrone" }
   ];
 
   function remove(zutaten) {
@@ -122,7 +134,7 @@
   </div>
 
   <div class="right">
-    <h2>Auswahl</h2>
+    <h2>Warenkorb</h2>
     {#each zutatens.filter(t => t.auswahl) as zutaten (zutaten.id)}
       <label
         class="auswahl"
